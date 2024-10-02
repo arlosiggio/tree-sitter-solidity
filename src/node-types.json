@@ -618,6 +618,11 @@
     }
   },
   {
+    "type": "decimal_number",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "do_while_statement",
     "named": true,
     "fields": {
@@ -1127,6 +1132,11 @@
     }
   },
   {
+    "type": "hex_number",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "hex_string_literal",
     "named": true,
     "fields": {}
@@ -1457,9 +1467,17 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
+        {
+          "type": "decimal_number",
+          "named": true
+        },
+        {
+          "type": "hex_number",
+          "named": true
+        },
         {
           "type": "number_unit",
           "named": true

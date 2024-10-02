@@ -6613,36 +6613,53 @@
       }
     },
     "number_literal": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_decimal_number"
+              "name": "decimal_number"
             },
             {
-              "type": "SYMBOL",
-              "name": "_hex_number"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "number_unit"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         },
         {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "number_unit"
+              "name": "hex_number"
             },
             {
-              "type": "BLANK"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "number_unit"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         }
       ]
     },
-    "_decimal_number": {
+    "decimal_number": {
       "type": "CHOICE",
       "members": [
         {
@@ -6655,7 +6672,7 @@
         }
       ]
     },
-    "_hex_number": {
+    "hex_number": {
       "type": "PREC",
       "value": 10,
       "content": {

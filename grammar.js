@@ -996,12 +996,15 @@ module.exports = grammar({
         ),
 
         string_literal: $ => prec.left(repeat1($.string)),
-        number_literal: $ => seq(choice($._decimal_number, $._hex_number), optional($.number_unit)),
-        _decimal_number: $ =>  choice(
+        number_literal: $ => choice(
+            seq($.decimal_number, optional($.number_unit)),
+            seq($.hex_number, optional($.number_unit))
+        ),
+        decimal_number: $ =>  choice(
             /(\d|_)+(\.(\d|_)+)?([eE](-)?(\d|_)+)?/,
             /\.(\d|_)+([eE](-)?(\d|_)+)?/,
         ),
-        _hex_number: $ => prec(10, /0[xX]([a-fA-F0-9][a-fA-F0-9]?_?)+/),
+        hex_number: $ => prec(10, /0[xX]([a-fA-F0-9][a-fA-F0-9]?_?)+/),
         // _hex_number: $ => seq(/0[xX]/, optional(optionalDashSeparation($._hex_digit))),
         _hex_digit: $ => /([a-fA-F0-9][a-fA-F0-9])/,
         number_unit: $ => choice(
